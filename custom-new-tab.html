@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #fbd4d5;
+            --secondary: #000000;
+            --text: #000000;
+            --bg: #ffffff;
+            --light-gray: #f8f8f8;
+            --border: #e5e5e5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 15px;
+        }
+
+        .date-time {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .link {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            padding: 16px 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .link:hover {
+            background-color: #fbd4d5;
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .spotify {
+            background-color: var(--light-gray);
+            border-color: var(--border);
+        }
+
+        .spotify a {
+            color: var(--text);
+        }
+
+        .instagram {
+            background-color: var(--light-gray);
+            border-color: var(--border);
+        }
+
+        .instagram a {
+            color: var(--text);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            color: #fbd4d5;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .links {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MY DASHBOARD</h1>
+            <div class="date-time" id="datetime">Loading date and time...</div>
+        </header>
+        
+        <div class="section">
+            <h2>Apps</h2>
+            <div class="links">
+                <div class="link spotify">
+                    <a href="https://open.spotify.com" target="_blank">SPOTIFY</a>
+                </div>
+                <div class="link">
+                    <a href="https://claude.ai" target="_blank">CLAUDE</a>
+                </div>
+                <div class="link">
+                    <a href="https://pinterest.nz" target="_blank">PINTEREST</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>YouTubers</h2>
+            <div class="links">
+                <div class="link">
+                    <a href="https://www.youtube.com/@LainiOzark" target="_blank">LAINI OZARK</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.youtube.com/@__phoebe.taylor" target="_blank">PHOEBE TAYLOR</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.youtube.com/@wasselpa" target="_blank">PAIGE WASSAL</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.youtube.com/@HitomiMochizuki222" target="_blank">HITOMI</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.youtube.com/@NotSoBlonde1" target="_blank">NOT SO BLONDE</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.youtube.com/@MalteMarten" target="_blank">MALTE MARTEN</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Instagram</h2>
+            <div class="links">
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/meghan.bay" target="_blank">MEGHAN BAY</a>
+                </div>
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/vanellimelli" target="_blank">VANELLIMELLI</a>
+                </div>
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/quida._" target="_blank">QUIDA</a>
+                </div>
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/nolanontherun" target="_blank">NOLANONTHERUN</a>
+                </div>
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/alinaackwonu" target="_blank">ALINA ACKWONU</a>
+                </div>
+                <div class="link instagram">
+                    <a href="https://www.instagram.com/florencegiven" target="_blank">FLORENCE GIVEN</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Blogs</h2>
+            <div class="links">
+                <div class="link">
+                    <a href="https://teakandthyme.com" target="_blank">TEAK AND THYME</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.whoisindyblue.com" target="_blank">WHO IS INDY BLUE</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Shopping</h2>
+            <div class="links">
+                <div class="link">
+                    <a href="https://www.afends.com" target="_blank">AFENDS</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.glassons.com/nz" target="_blank">GLASSONS</a>
+                </div>
+                <div class="link">
+                    <a href="https://rubynz.com" target="_blank">RUBY</a>
+                </div>
+                <div class="link">
+                    <a href="https://cottonon.com/nz" target="_blank">COTTON ON</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.mecca.com/en-nz" target="_blank">MECCA</a>
+                </div>
+                <div class="link">
+                    <a href="https://www.indigoluna.com.au" target="_blank">INDIGO LUNA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Update time immediately and then every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
