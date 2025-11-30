@@ -3,287 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>My Homepage</title>
     <style>
-        :root {
-            --primary: #fbd4d5;
-            --secondary: #000000;
-            --text: #000000;
-            --bg: #ffffff;
-            --light-gray: #f8f8f8;
-            --border: #e5e5e5;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.4;
-            letter-spacing: 0.01em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #2a2a2a;
+            line-height: 1.6;
+            padding: 60px 80px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 80px;
+        }
+
+        .clock-section {
+            flex-shrink: 0;
+        }
+
+        .time {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+
+        .date {
+            font-size: 1.1rem;
             font-weight: 400;
+            color: #2a2a2a;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .apps-section {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        h1 {
-            font-size: 2.2rem;
+        .app-card {
+            width: 140px;
+            height: 120px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #2a2a2a;
+            font-size: 0.85rem;
             font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 15px;
+            transition: all 0.2s ease;
         }
 
-        .date-time {
-            font-size: 0.9rem;
-            color: #777;
-            margin-bottom: 20px;
-            font-weight: 400;
-            letter-spacing: 0.05em;
+        .app-card:hover {
+            border-color: #999;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .section {
             margin-bottom: 50px;
         }
 
-        .section h2 {
-            font-size: 1rem;
+        .section-title {
+            font-size: 1.1rem;
             font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             margin-bottom: 25px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
+            color: #1a1a1a;
         }
 
-        .links {
+        .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
         }
 
-        .link {
-            background-color: var(--bg);
-            border: 1px solid var(--border);
-            padding: 16px 10px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .link:hover {
-            background-color: #fbd4d5;
-        }
-
-        a {
-            color: var(--text);
+        .link-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 30px 20px;
             text-decoration: none;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            color: #2a2a2a;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        .spotify {
-            background-color: var(--light-gray);
-            border-color: var(--border);
-        }
-
-        .spotify a {
-            color: var(--text);
-        }
-
-        .instagram {
-            background-color: var(--light-gray);
-            border-color: var(--border);
-        }
-
-        .instagram a {
-            color: var(--text);
-        }
-
-        .divider {
             text-align: center;
-            margin: 40px 0;
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            color: #fbd4d5;
-            font-weight: 400;
+            min-height: 80px;
+        }
+
+        .link-card:hover {
+            border-color: #999;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 1400px) {
+            .links-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1100px) {
+            body {
+                padding: 40px 50px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .apps-section {
+                margin-left: 0;
+            }
+
+            .links-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 30px 15px;
+            body {
+                padding: 30px 20px;
             }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .links {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-        }
 
-        @media (max-width: 576px) {
-            .container {
-                padding: 20px 10px;
+            .time {
+                font-size: 2.5rem;
             }
-            
-            h1 {
-                font-size: 1.5rem;
+
+            .apps-section {
+                flex-wrap: wrap;
+            }
+
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>MY DASHBOARD</h1>
-            <div class="date-time" id="datetime">Loading date and time...</div>
-        </header>
-        
-        <div class="section">
-            <h2>Apps</h2>
-            <div class="links">
-                <div class="link spotify">
-                    <a href="https://open.spotify.com" target="_blank">SPOTIFY</a>
-                </div>
-                <div class="link">
-                    <a href="https://claude.ai" target="_blank">CLAUDE</a>
-                </div>
-                <div class="link">
-                    <a href="https://pinterest.nz" target="_blank">PINTEREST</a>
-                </div>
-            </div>
+    <div class="header">
+        <div class="clock-section">
+            <div class="time" id="time">09:28 PM</div>
+            <div class="date" id="date">Sunday, November 30, 2025</div>
         </div>
 
-        <div class="section">
-            <h2>YouTubers</h2>
-            <div class="links">
-                <div class="link">
-                    <a href="https://www.youtube.com/@LainiOzark" target="_blank">LAINI OZARK</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.youtube.com/@__phoebe.taylor" target="_blank">PHOEBE TAYLOR</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.youtube.com/@wasselpa" target="_blank">PAIGE WASSAL</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.youtube.com/@HitomiMochizuki222" target="_blank">HITOMI</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.youtube.com/@NotSoBlonde1" target="_blank">NOT SO BLONDE</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.youtube.com/@MalteMarten" target="_blank">MALTE MARTEN</a>
-                </div>
-            </div>
+        <div class="apps-section">
+            <a href="https://www.pinterest.com/" class="app-card" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" class="app-icon">
+                <span>Pinterest</span>
+            </a>
+            <a href="https://www.moonsift.com/" class="app-card" target="_blank">
+                <img src="https://www.moonsift.com/favicon.ico" alt="Wishlist" class="app-icon">
+                <span>Wishlist</span>
+            </a>
+            <a href="https://open.spotify.com/" class="app-card" target="_blank">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="Spotify" class="app-icon">
+                <span>Spotify</span>
+            </a>
+            <a href="https://claude.ai/" class="app-card" target="_blank">
+                <img src="https://claude.ai/images/claude_app_icon.png" alt="Claude" class="app-icon">
+                <span>Claude</span>
+            </a>
+            <a href="https://partners.shopify.com/" class="app-card" target="_blank">
+                <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify" class="app-icon">
+                <span>Shopify</span>
+            </a>
+            <a href="https://www.messenger.com/" class="app-card" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg" alt="Messenger" class="app-icon">
+                <span>Messenger</span>
+            </a>
         </div>
-        
-        <div class="section">
-            <h2>Instagram</h2>
-            <div class="links">
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/meghan.bay" target="_blank">MEGHAN BAY</a>
-                </div>
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/vanellimelli" target="_blank">VANELLIMELLI</a>
-                </div>
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/quida._" target="_blank">QUIDA</a>
-                </div>
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/nolanontherun" target="_blank">NOLANONTHERUN</a>
-                </div>
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/alinaackwonu" target="_blank">ALINA ACKWONU</a>
-                </div>
-                <div class="link instagram">
-                    <a href="https://www.instagram.com/florencegiven" target="_blank">FLORENCE GIVEN</a>
-                </div>
-            </div>
-        </div>
+    </div>
 
-        <div class="section">
-            <h2>Blogs</h2>
-            <div class="links">
-                <div class="link">
-                    <a href="https://teakandthyme.com" target="_blank">TEAK AND THYME</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.whoisindyblue.com" target="_blank">WHO IS INDY BLUE</a>
-                </div>
-            </div>
+    <div class="section">
+        <h2 class="section-title">Design:</h2>
+        <div class="links-grid">
+            <a href="https://tropicaltype.com/" class="link-card" target="_blank">Tropical Type</a>
+            <a href="https://creativemarket.com/" class="link-card" target="_blank">Creative Market</a>
+            <a href="https://unsplash.com/" class="link-card" target="_blank">Unsplash</a>
+            <a href="https://replicate.com/google/nano-banana-pro" class="link-card" target="_blank">Nano Banana</a>
+            <a href="https://docs.google.com/document/d/1CGuBZOfhzFgBMTCBdJYX1tscYNXK-GXoZYewXu49Jb0/edit?tab=t.0" class="link-card" target="_blank">Resource List</a>
         </div>
+    </div>
 
-        <div class="section">
-            <h2>Shopping</h2>
-            <div class="links">
-                <div class="link">
-                    <a href="https://www.afends.com" target="_blank">AFENDS</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.glassons.com/nz" target="_blank">GLASSONS</a>
-                </div>
-                <div class="link">
-                    <a href="https://rubynz.com" target="_blank">RUBY</a>
-                </div>
-                <div class="link">
-                    <a href="https://cottonon.com/nz" target="_blank">COTTON ON</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.mecca.com/en-nz" target="_blank">MECCA</a>
-                </div>
-                <div class="link">
-                    <a href="https://www.indigoluna.com.au" target="_blank">INDIGO LUNA</a>
-                </div>
-            </div>
+    <div class="section">
+        <h2 class="section-title">Shops:</h2>
+        <div class="links-grid">
+            <a href="https://www.oliveclothing.com/" class="link-card" target="_blank">Olive Clothing</a>
+            <a href="https://organicbasics.com/" class="link-card" target="_blank">Organic Basics</a>
+            <a href="https://indigoluna.store/" class="link-card" target="_blank">Indigo Luna</a>
+            <a href="https://www.chulle.com/" class="link-card" target="_blank">Chulle</a>
+            <a href="https://damsonmadder.com/" class="link-card" target="_blank">Damson Madder</a>
+            <a href="https://scgcollections.com/" class="link-card" target="_blank">SCG</a>
+            <a href="https://kandrlondon.com/" class="link-card" target="_blank">K & R</a>
+            <a href="https://rubynz.com/" class="link-card" target="_blank">Ruby NZ</a>
+            <a href="https://apresstudio.com.au/" class="link-card" target="_blank">Apres</a>
+            <a href="https://ellamae.xyz/" class="link-card" target="_blank">Ella Mae</a>
+            <a href="https://www.thereformation.com/" class="link-card" target="_blank">Reformation</a>
+            <a href="https://www.urbanoutfitters.com/" class="link-card" target="_blank">Urban Outfitters</a>
+            <a href="https://www.arket.com/" class="link-card" target="_blank">Arket</a>
+            <a href="https://www.birkenstock.com/" class="link-card" target="_blank">Birkenstock</a>
+            <a href="https://www.stories.com/" class="link-card" target="_blank">& Other Stories</a>
+            <a href="https://kotn.com/" class="link-card" target="_blank">Kotn</a>
+            <a href="https://ascolour.com/" class="link-card" target="_blank">ASColor</a>
+            <a href="https://www.wolfcircus.com/" class="link-card" target="_blank">Wolf Circus</a>
+            <a href="https://www.peachyden.co.uk/" class="link-card" target="_blank">Peachy Den</a>
+            <a href="https://lonelylabel.com/" class="link-card" target="_blank">Lonely</a>
+            <a href="https://afends.com/" class="link-card" target="_blank">Afends</a>
+            <a href="https://katharinalou.com/" class="link-card" target="_blank">Kathrina Lou</a>
+            <a href="https://www.sezane.com/en-en" class="link-card" target="_blank">Sezane</a>
+            <a href="https://www.aym-studio.com/collections/all-tops" class="link-card" target="_blank">Aym</a>
+            <a href="https://chouchouintimates.com/" class="link-card" target="_blank">Chouchou</a>
         </div>
     </div>
 
     <script>
-        // Update date and time
-        function updateDateTime() {
+        function updateTime() {
             const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+            
+            // Format time
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes} ${ampm}`;
+            
+            // Format date
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+            
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
         }
-        
-        // Update time immediately and then every second
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
+
+        updateTime();
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
